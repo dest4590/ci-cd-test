@@ -15,4 +15,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          script: whoami
+          script: |
+            cd server/ci-cd-test
+            git pull
+            docker compose up -d --build
+            
